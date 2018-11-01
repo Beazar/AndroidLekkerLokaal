@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+
+    <string-array name="namen">
+        <item>KSCW Hofstade</item>
+        <item>KSK Erembodegem</item>
+        <item>FC Doggen</item>
+    </string-array>
+
+    <string-array name="sporten">
+        <item>Voetbal</item>
+        <item>Voetbal</item>
+        <item>Voetbal</item>
+    </string-array>
+
+    <string-array name="emails">
+        <item>info@hofstade.be</item>
+        <item>info@kske.be</item>
+        <item>info@doggen.be</item>
+    </string-array>
+
+    <string-array name="websites">
+        <item>Voetbal</item>
+        <item>Voetbal</item>
+        <item>Voetbal</item>
+    </string-array>
+
+    <integer-array name="postcodes">
+        <item>9308</item>
+        <item>9320</item>
+        <item>9320</item>
+    </integer-array>
+
+    <string-array name="beschrijvingen">
+        <item>Beschrijving van qarfa</item>
+        <item>Dit is een frigo. Dit is een frigo. dit is een frigo. dit is een frigo.</item>
+        <item>Borselein, als een winnaar</item>
+    </string-array>
+
+    <string-array name="adressen">
+        <item>Stationsstraat 13</item>
+        <item>Gerstenstraat 7</item>
+        <item>Resschebeke 26</item>
+
+    </string-array>
+    <string-array name="categorieen">
+        <item>Traditioneel</item>
+        <item>Traditioneel</item>
+        <item>Traditioneel</item>
+
+    </string-array>
+</resources>
