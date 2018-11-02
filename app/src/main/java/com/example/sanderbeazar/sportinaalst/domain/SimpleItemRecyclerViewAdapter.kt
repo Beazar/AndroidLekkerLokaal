@@ -45,6 +45,8 @@ class SimpleItemRecyclerViewAdapter(private val parentActivity: SportclubLijstFr
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val sportclub = sportclubs[position]
         holder.name.text = sportclub.naam
+        holder.sport.text = sportclub.sport
+        holder.adres.text = sportclub.adres + ", " + sportclub.Postcode
 
         with(holder.itemView) {
             tag = sportclub // Save the comic represented by this view
@@ -56,5 +58,7 @@ class SimpleItemRecyclerViewAdapter(private val parentActivity: SportclubLijstFr
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val name: TextView = view.lijstnaam
+        val sport: TextView = view.sport
+        val adres: TextView = view.adres
     }
 }

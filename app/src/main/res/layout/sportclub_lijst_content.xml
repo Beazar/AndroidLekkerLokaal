@@ -2,20 +2,11 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_height="wrap_content"
     android:layout_width="match_parent"
-    android:orientation="vertical">
-
-    <ImageView
-        android:id="@+id/sportclub_image"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:adjustViewBounds="true"
-        android:contentDescription="@null"
-        android:scaleType="centerCrop"
-        />
+    android:orientation="vertical"
+    android:background="@drawable/customborder">
 
     <TextView
         android:id="@+id/lijstnaam"
-        style="@style/TextAppearance.AppCompat.Subhead.Inverse"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
@@ -24,10 +15,26 @@
         android:textStyle="bold"
         android:visibility="visible" />
 
-    <Button
-        android:id="@+id/button"
+    <TextView
+        android:id="@+id/sport"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Button" />
+        android:layout_gravity="bottom"
+        android:text="SPORT"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:visibility="visible" />
+
+    <TextView
+        android:id="@+id/adres"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:text="ADRES"
+        android:textSize="15sp"
+        android:visibility="visible" />
+
+
+
 
 </LinearLayout>

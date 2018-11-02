@@ -26,16 +26,10 @@
         <item>Voetbal</item>
     </string-array>
 
-    <integer-array name="postcodes">
-        <item>9308</item>
-        <item>9320</item>
-        <item>9320</item>
-    </integer-array>
-
-    <string-array name="beschrijvingen">
-        <item>Beschrijving van qarfa</item>
-        <item>Dit is een frigo. Dit is een frigo. dit is een frigo. dit is een frigo.</item>
-        <item>Borselein, als een winnaar</item>
+    <string-array name="postcodes">
+        <item>9308 Hofstade</item>
+        <item>9320 Erembodegem</item>
+        <item>9320 Erembodegem</item>
     </string-array>
 
     <string-array name="adressen">

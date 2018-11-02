@@ -5,14 +5,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="65dp"
+        android:layout_marginTop="0dp"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        >
 
         <android.support.v7.widget.RecyclerView
             xmlns:android="http://schemas.android.com/apk/res/android"
@@ -22,11 +24,10 @@
             android:name="com.example.sanderbeazar.sportinaalst.sportclub_lijst_fragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
             app:layoutManager="android.support.v7.widget.LinearLayoutManager"
             tools:context=".MainActivity"
-            tools:listitem="@layout/sportclub_lijst_content" />
+            tools:listitem="@layout/sportclub_lijst_content"
+            />
 
     </FrameLayout>
 </android.support.constraint.ConstraintLayout>

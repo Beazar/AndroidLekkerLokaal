@@ -58,7 +58,7 @@ class SportclubLijstFragment : Fragment() {
         val sporten = resources.getStringArray(R.array.sporten)
         val emails = resources.getStringArray(R.array.emails)
         val websites = resources.getStringArray(R.array.websites)
-        val postcodes = resources.getIntArray(R.array.postcodes)
+        val postcodes = resources.getStringArray(R.array.postcodes)
         val adressen = resources.getStringArray(R.array.adressen)
         //val urls = resources.getStringArray(R.array.urls)
 
