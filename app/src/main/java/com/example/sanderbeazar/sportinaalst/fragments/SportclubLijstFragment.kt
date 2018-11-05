@@ -8,7 +8,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.sanderbeazar.sportinaalst.R
-import com.example.sanderbeazar.sportinaalst.R.layout.sportclub_lijst_fragment
 import com.example.sanderbeazar.sportinaalst.domain.SimpleItemRecyclerViewAdapter
 import com.example.sanderbeazar.sportinaalst.domain.Sportclub
 import kotlinx.android.synthetic.main.sportclub_lijst_fragment.*
@@ -18,10 +17,7 @@ class SportclubLijstFragment : Fragment() {
     private var sportclubs: List<Sportclub>? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        Log.d("Listactivity", "onCreate")
         super.onCreate(savedInstanceState)
-
-        Log.d("Listactivity", "onCreate2")
 
     }
 
@@ -43,11 +39,17 @@ class SportclubLijstFragment : Fragment() {
 
 
     public fun startNewActivityForDetail(item: Sportclub) {
-        val intent = Intent(context, SportclubDetailFragment::class.java).apply {
-            putExtra(SportclubDetailFragment.ARG_SPORTCLUB, item)
-        }
 
-        //startActivity(intent)
+        val sportclubDetailFragment = SportclubDetailFragment()
+
+        this.fragmentManager!!.beginTransaction()
+                .replace(R.id.container_main, sportclubDetailFragment)
+                .addToBackStack(null)
+                .commit()
+
+        sportclubDetailFragment.addObject(item)
+
+
     }
 
     private fun createSportclubs(): List<Sportclub> {

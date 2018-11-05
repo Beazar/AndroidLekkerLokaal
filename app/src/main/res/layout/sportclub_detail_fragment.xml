@@ -19,7 +19,7 @@
         />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/tv_naamSportclub"
         android:layout_width="wrap_content"
         android:layout_height="29dp"
         android:layout_marginStart="8dp"
@@ -35,7 +35,7 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView"/>
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/tv_sport"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -47,10 +47,10 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_naamSportclub" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/tv_adres"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -59,12 +59,12 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:text="Adres"
-        app:layout_constraintEnd_toStartOf="@+id/textView4"
+        app:layout_constraintEnd_toStartOf="@+id/tv_afstand"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_sport" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/tv_afstand"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -72,7 +72,7 @@
         android:layout_marginRight="8dp"
         android:text="Afstand"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_sport" />
 
     <com.google.android.gms.maps.MapView
         android:id="@+id/mapView"
@@ -85,10 +85,10 @@
         android:layout_marginRight="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_adres" />
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/tv_email"
         android:layout_width="125dp"
         android:layout_height="49dp"
         android:layout_marginStart="8dp"
@@ -99,7 +99,7 @@
         app:layout_constraintTop_toBottomOf="@+id/mapView" />
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/tv_website"
         android:layout_width="118dp"
         android:layout_height="43dp"
         android:layout_marginTop="8dp"
@@ -110,7 +110,7 @@
         app:layout_constraintTop_toBottomOf="@+id/mapView" />
 
     <CheckedTextView
-        android:id="@+id/checkedTextView"
+        android:id="@+id/ctv_jongens"
         android:layout_width="119dp"
         android:layout_height="16dp"
         android:layout_marginStart="8dp"
@@ -120,12 +120,12 @@
         android:layout_marginRight="8dp"
         android:checked="true"
         android:text="Jongens"
-        app:layout_constraintEnd_toStartOf="@+id/textView6"
-        app:layout_constraintStart_toEndOf="@+id/textView5"
+        app:layout_constraintEnd_toStartOf="@+id/tv_website"
+        app:layout_constraintStart_toEndOf="@+id/tv_email"
         app:layout_constraintTop_toBottomOf="@+id/mapView" />
 
     <CheckedTextView
-        android:id="@+id/checkedTextView2"
+        android:id="@+id/ctv_meisjes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -135,7 +135,7 @@
         android:layout_marginRight="8dp"
         android:checked="true"
         android:text="Meisjes"
-        app:layout_constraintEnd_toStartOf="@+id/textView6"
-        app:layout_constraintStart_toEndOf="@+id/textView5"
-        app:layout_constraintTop_toBottomOf="@+id/checkedTextView" />
+        app:layout_constraintEnd_toStartOf="@+id/tv_website"
+        app:layout_constraintStart_toEndOf="@+id/tv_email"
+        app:layout_constraintTop_toBottomOf="@+id/ctv_jongens" />
 </android.support.constraint.ConstraintLayout>

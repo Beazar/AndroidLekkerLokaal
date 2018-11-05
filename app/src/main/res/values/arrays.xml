@@ -21,9 +21,9 @@
     </string-array>
 
     <string-array name="websites">
-        <item>Voetbal</item>
-        <item>Voetbal</item>
-        <item>Voetbal</item>
+        <item>www.hofstade.be</item>
+        <item>www.kske.be</item>
+        <item>www.doggen.be</item>
     </string-array>
 
     <string-array name="postcodes">
