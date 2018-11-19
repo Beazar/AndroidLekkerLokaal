@@ -10,14 +10,20 @@ import android.view.ViewGroup
 import com.example.sanderbeazar.sportinaalst.R
 import com.example.sanderbeazar.sportinaalst.domain.SimpleItemRecyclerViewAdapter
 import com.example.sanderbeazar.sportinaalst.domain.Sportclub
+import com.google.android.gms.maps.SupportMapFragment
+import kotlinx.android.synthetic.main.sportclub_detail_fragment.*
 import kotlinx.android.synthetic.main.sportclub_lijst_fragment.*
 
 class SportclubLijstFragment : Fragment() {
 
     private var sportclubs: List<Sportclub>? = null
+    private var msportclubCallbacks: SportclubCallbacks? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        Log.d("testpurp","voor definieren")
+        msportclubCallbacks = activity as SportclubCallbacks
+        Log.d("testpurp","na definieren")
 
     }
 
@@ -48,8 +54,9 @@ class SportclubLijstFragment : Fragment() {
                 .commit()
 
         sportclubDetailFragment.addObject(item)
-
-
+        Log.d("testpurp","voor onMapCreated ")
+        msportclubCallbacks!!.onMapCreated()
+        Log.d("testpurp","na onMapCreated ")
     }
 
     private fun createSportclubs(): List<Sportclub> {
@@ -83,6 +90,10 @@ class SportclubLijstFragment : Fragment() {
         lijst_fragment.adapter  = null
     }
 
-
+    interface SportclubCallbacks {
+        fun onMapCreated()
+    }
 
 }
+
+

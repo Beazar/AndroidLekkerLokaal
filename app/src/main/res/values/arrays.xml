@@ -33,15 +33,9 @@
     </string-array>
 
     <string-array name="adressen">
-        <item>Stationsstraat 13</item>
+        <item>Steenbergstraat 10</item>
         <item>Gerstenstraat 7</item>
         <item>Resschebeke 26</item>
-
-    </string-array>
-    <string-array name="categorieen">
-        <item>Traditioneel</item>
-        <item>Traditioneel</item>
-        <item>Traditioneel</item>
 
     </string-array>
 </resources>
