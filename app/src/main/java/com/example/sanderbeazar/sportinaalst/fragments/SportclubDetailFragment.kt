@@ -27,6 +27,7 @@ class SportclubDetailFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -46,20 +47,6 @@ class SportclubDetailFragment : Fragment() {
         }
 
         btn_mail.setOnClickListener{
-            /*
-            /* Create the Intent */
-            var emailIntent = Intent(android.content.Intent.ACTION_SEND);
-
-/* Fill it with Data */
-            emailIntent.setType("plain/text");
-            Log.d("testpurp",this.sportclub!!.email)
-            emailIntent.putExtra(android.content.Intent.EXTRA_EMAIL, this.sportclub!!.email);
-            emailIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "E-mail via SportInAalst");
-            emailIntent.putExtra(android.content.Intent.EXTRA_TEXT, "");
-
-/* Send it off to the Activity-Chooser */
-            context!!.startActivity(Intent.createChooser(emailIntent, "Send mail..."));
-            */
             val emailIntent = Intent(Intent.ACTION_SENDTO, Uri.fromParts(
                     "mailto", sportclub!!.email, null))
             emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Contact via SportInAalstApp")
@@ -71,8 +58,11 @@ class SportclubDetailFragment : Fragment() {
     }
 
     fun addObject(sportclub:Sportclub){
-        this.sportclub = sportclub;
+        this.sportclub = sportclub
         var naamSportclubString = sportclub.naam
+        if(sportclub.email == null){
+            this.btn_mail.setVisibility(View.INVISIBLE)
+        }
 
     }
 
