@@ -3,6 +3,9 @@ package com.example.sanderbeazar.sportinaalst
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
+import com.example.sanderbeazar.sportinaalst.fragments.SearchFragmentFragment
 import com.example.sanderbeazar.sportinaalst.fragments.SportclubLijstFragment
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -17,6 +20,38 @@ class MainActivity : AppCompatActivity(),  SportclubLijstFragment.SportclubCallb
             googleMap = it
         })*/
         Log.d("testpurp","tijdens 2 onMapCreated ")
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+       // supportActionBar!!.setDisplayShowTitleEnabled(false)
+        Log.d("testpurp","tijdens onCreateOptionsMenu ")
+        //inflate het menu
+        menuInflater.inflate(R.menu.menu_listview, menu);
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
+        R.id.action_search -> {
+            supportFragmentManager.beginTransaction()
+                    .replace(R.id.container_main, SearchFragmentFragment())
+                    .addToBackStack(null)
+                    .commit()
+
+            true
+
+        }
+        R.id.action_lijst -> {
+            supportFragmentManager.beginTransaction()
+                    .replace(R.id.container_main, SportclubLijstFragment())
+                    .addToBackStack(null)
+                    .commit()
+            true
+        }
+        else -> {
+            // If we got here, the user's action was not recognized.
+            // Invoke the superclass to handle it.
+            super.onOptionsItemSelected(item)
+        }
     }
 
 
