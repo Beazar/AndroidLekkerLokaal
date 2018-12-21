@@ -11,13 +11,16 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.sanderbeazar.sportinaalst.MainActivity
 import com.example.sanderbeazar.sportinaalst.R
 import com.example.sanderbeazar.sportinaalst.domain.SimpleItemRecyclerViewAdapter
 import com.example.sanderbeazar.sportinaalst.domain.Sportclub
 import com.example.sanderbeazar.sportinaalst.ui.SportclubViewmodel
 import com.google.android.gms.maps.SupportMapFragment
 import kotlinx.android.synthetic.main.sportclub_detail_fragment.*
+import kotlinx.android.synthetic.main.sportclub_lijst_content.*
 import kotlinx.android.synthetic.main.sportclub_lijst_fragment.*
+import kotlinx.android.synthetic.main.sportclub_search_fragment.*
 
 class SportclubLijstFragment : Fragment() {
 
@@ -33,8 +36,13 @@ class SportclubLijstFragment : Fragment() {
 
         msportclubCallbacks = activity as SportclubCallbacks
 
-
     }
+
+    fun zoeken(item: List<Sportclub>){
+        this.sportclubs = item
+        Log.d("testpurp2",this.sportclubs!!.size.toString())
+    }
+
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
