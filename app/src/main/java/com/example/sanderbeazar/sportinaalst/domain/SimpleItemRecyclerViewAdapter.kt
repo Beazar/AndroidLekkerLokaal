@@ -1,5 +1,6 @@
 package com.example.sanderbeazar.sportinaalst.domain
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.support.v7.widget.RecyclerView
 import android.util.Log
@@ -26,13 +27,13 @@ class SimpleItemRecyclerViewAdapter(private val parentActivity: SportclubLijstFr
             // This allows us to reuse a single listener for all items in the list
             Log.d("init", "init1")
             val item = v.tag as Sportclub
-
+/*
             val intent = Intent(v.context, SportclubDetailFragment::class.java).apply {
                 putExtra(SportclubDetailFragment.ARG_SPORTCLUB, item)
                 parentActivity.startNewActivityForDetail(item)
-
+*/
 //}
-            }
+      //      }
         }
     }
 
@@ -42,8 +43,9 @@ class SimpleItemRecyclerViewAdapter(private val parentActivity: SportclubLijstFr
         return ViewHolder(view)
     }
 
+    @SuppressLint("NewApi")
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val sportclub = sportclubs[position]
+        val sportclub = sportclubs!![position]
         holder.name.text = sportclub.naam
         holder.sport.text = sportclub.sport
         holder.adres.text = sportclub.adres + ", " + sportclub.Postcode
@@ -54,7 +56,7 @@ class SimpleItemRecyclerViewAdapter(private val parentActivity: SportclubLijstFr
         }
     }
 
-    override fun getItemCount() = sportclubs.size
+    override fun getItemCount() = sportclubs!!.size
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val name: TextView = view.lijstnaam
