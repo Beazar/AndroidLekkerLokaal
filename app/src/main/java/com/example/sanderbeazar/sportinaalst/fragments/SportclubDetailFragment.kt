@@ -143,4 +143,6 @@ class SportclubDetailFragment : Fragment(), OnMapReadyCallback {
         }
     }
 
+
+
 }
