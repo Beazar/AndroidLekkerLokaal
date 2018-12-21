@@ -25,8 +25,8 @@ class SimpleItemRecyclerViewAdapter(private val parentActivity: SportclubLijstFr
             // Every view has a tag that can be used to store data related to that view
             // Here each item in the RecyclerView keeps a reference to the comic it represents.
             // This allows us to reuse a single listener for all items in the list
-            Log.d("init", "init1")
             val item = v.tag as Sportclub
+            parentActivity.startNewActivityForDetail(item);
 /*
             val intent = Intent(v.context, SportclubDetailFragment::class.java).apply {
                 putExtra(SportclubDetailFragment.ARG_SPORTCLUB, item)

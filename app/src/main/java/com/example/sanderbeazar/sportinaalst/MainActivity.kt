@@ -13,13 +13,6 @@ import com.google.android.gms.maps.SupportMapFragment
 
 class MainActivity : AppCompatActivity(),  SportclubLijstFragment.SportclubCallbacks {
     override fun onMapCreated() {
-        Log.d("testpurp","tijdens 1 onMapCreated ")
-        Log.d("testpurp", supportFragmentManager.findFragmentById(R.id.map).toString())
-        /*mapFragment =  supportFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
-        mapFragment.getMapAsync(OnMapReadyCallback {
-            googleMap = it
-        })*/
-        Log.d("testpurp","tijdens 2 onMapCreated ")
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -54,9 +47,6 @@ class MainActivity : AppCompatActivity(),  SportclubLijstFragment.SportclubCallb
         }
     }
 
-
-    lateinit var mapFragment: SupportMapFragment
-    lateinit var googleMap : GoogleMap
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

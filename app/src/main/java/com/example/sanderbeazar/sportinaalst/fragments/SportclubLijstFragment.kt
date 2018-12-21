@@ -29,7 +29,6 @@ class SportclubLijstFragment : Fragment() {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        Log.d("testpurp","start oncreate")
         super.onCreate(savedInstanceState)
 
         msportclubCallbacks = activity as SportclubCallbacks
@@ -65,7 +64,6 @@ class SportclubLijstFragment : Fragment() {
             }
         }
 
-        Log.d("sportclubs",sportclubs.toString())
         }
 
 
@@ -84,33 +82,6 @@ class SportclubLijstFragment : Fragment() {
         msportclubCallbacks!!.onMapCreated() //dit nog checken
         Log.d("testpurp","na onMapCreated ")
     }
-
-    /*  private fun createSportclubs(): List<Sportclub> {
-
-          val restaurantList = mutableListOf<Sportclub>()
-
-          val resources = activity!!.applicationContext.resources
-          val namen = resources.getStringArray(R.array.namen)
-          val sporten = resources.getStringArray(R.array.sporten)
-          val emails = resources.getStringArray(R.array.emails)
-          val websites = resources.getStringArray(R.array.websites)
-          val postcodes = resources.getStringArray(R.array.postcodes)
-          val adressen = resources.getStringArray(R.array.adressen)
-          //val urls = resources.getStringArray(R.array.urls)
-
-          // Get rage face images.
-         // val typedArray = resources.obtainTypedArray(R.array.images)
-          val imageIds = IntArray(namen.size)
-          for (i in 0 until namen.size) {
-              val deSportclub = Sportclub(namen[i], sporten[i], emails[i],websites[i],true,true, postcodes[i], adressen[i],"id"+i)
-              restaurantList.add(deSportclub)
-              Log.d("restos", "resto aangemaakt")
-          }
-          //typedArray.recycle()
-
-          return restaurantList
-          ¨
-    }*/
 
     override fun onStop() {
         super.onStop()
