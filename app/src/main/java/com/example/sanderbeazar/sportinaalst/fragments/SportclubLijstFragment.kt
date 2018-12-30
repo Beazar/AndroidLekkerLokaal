@@ -1,8 +1,6 @@
 package com.example.sanderbeazar.sportinaalst.fragments
 
 import android.arch.lifecycle.ViewModelProviders
-import android.content.Intent
-import android.opengl.Visibility
 import android.os.Build
 import android.os.Bundle
 import android.support.annotation.RequiresApi
@@ -11,16 +9,11 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.sanderbeazar.sportinaalst.MainActivity
 import com.example.sanderbeazar.sportinaalst.R
-import com.example.sanderbeazar.sportinaalst.domain.SimpleItemRecyclerViewAdapter
+import com.example.sanderbeazar.sportinaalst.SportclubLijst.SimpleItemRecyclerViewAdapter
 import com.example.sanderbeazar.sportinaalst.domain.Sportclub
 import com.example.sanderbeazar.sportinaalst.ui.SportclubViewmodel
-import com.google.android.gms.maps.SupportMapFragment
-import kotlinx.android.synthetic.main.sportclub_detail_fragment.*
-import kotlinx.android.synthetic.main.sportclub_lijst_content.*
 import kotlinx.android.synthetic.main.sportclub_lijst_fragment.*
-import kotlinx.android.synthetic.main.sportclub_search_fragment.*
 
 class SportclubLijstFragment : Fragment() {
 
@@ -38,7 +31,7 @@ class SportclubLijstFragment : Fragment() {
 
     }
 
-    fun zoeken(item: List<Sportclub>){
+    fun filterenVanSportclubs(item: List<Sportclub>){
         this.sportclubs = item
         Log.d("testpurp2",this.sportclubs!!.size.toString())
     }
@@ -59,24 +52,23 @@ class SportclubLijstFragment : Fragment() {
 
         if(sportclubs==null){
             viewModel.getSportclubs().observe(this, android.arch.lifecycle.Observer {
-                var pairs = it!!.map{club -> club.naam to club}
-                var sorted = pairs.sortedWith(compareBy { club -> club.first })
+                val pairs = it!!.map{ club -> club.naam to club}
+                val sorted = pairs.sortedWith(compareBy { club -> club.first })
                 lijst_fragment.adapter = SimpleItemRecyclerViewAdapter(this, sorted.map { club -> club.second })
             })
 
         } else{
             if(sportclubs!!.isNotEmpty()){
-                lijst_fragment.adapter = SimpleItemRecyclerViewAdapter(this,sportclubs!!)
+                lijst_fragment.adapter = SimpleItemRecyclerViewAdapter(this, sportclubs!!)
             }else{
-                lijst_fragment.visibility = View.GONE;
+                lijst_fragment.visibility = View.GONE
             }
         }
 
         }
 
 
-
-    public fun startNewActivityForDetail(item: Sportclub) {
+    fun startNewActivityForDetail(item: Sportclub) {
 
         val sportclubDetailFragment = SportclubDetailFragment()
 

@@ -6,10 +6,10 @@ import android.util.Log
 import com.example.sanderbeazar.sportinaalst.base.InjectedViewModel
 import com.example.sanderbeazar.sportinaalst.domain.Sportclub
 import com.example.sanderbeazar.sportinaalst.network.SportclubApi
+import com.orhanobut.logger.Logger
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
-import com.orhanobut.logger.Logger
 import javax.inject.Inject
 
 class SportclubViewmodel: InjectedViewModel() {
@@ -23,7 +23,7 @@ class SportclubViewmodel: InjectedViewModel() {
     /**
      * Indicates whether the loading view should be displayed.
      */
-    val loadingVisibility: MutableLiveData<Boolean> = MutableLiveData()
+    private val loadingVisibility: MutableLiveData<Boolean> = MutableLiveData()
 
     /**
      * Represents a disposable resources
@@ -52,7 +52,7 @@ class SportclubViewmodel: InjectedViewModel() {
 
     @SuppressLint("NewApi")
     private fun onRetrieveSportclubSuccess(result: List<Sportclub>) {
-        var filter = result.filter { r -> r.naam!!.contains("test",true) }
+        val filter = result.filter { r -> r.naam.contains("test",true) }
         sportclubs.value = result - filter//result.toList()
 
         Logger.i(result.toString())

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<lint>
+    <issue id="IconLocation">
+        <ignore path="src/main/res/drawable/andere.jpg" />
+        <ignore path="src/main/res/drawable/basketbal.jpg" />
+        <ignore path="src/main/res/drawable/dans.jpg" />
+        <ignore path="src/main/res/drawable/floorball.jpg" />
+        <ignore path="src/main/res/drawable/tennis.jpg" />
+        <ignore path="src/main/res/drawable/voetbal.jpg" />
+        <ignore path="src/main/res/drawable/volleybal.jpg" />
+    </issue>
+</lint>

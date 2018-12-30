@@ -2,40 +2,4 @@
 
 <resources>
 
-    <string-array name="namen">
-        <item>KSCW Hofstade</item>
-        <item>KSK Erembodegem</item>
-        <item>FC Doggen</item>
-    </string-array>
-
-    <string-array name="sporten">
-        <item>Voetbal</item>
-        <item>Voetbal</item>
-        <item>Voetbal</item>
-    </string-array>
-
-    <string-array name="emails">
-        <item>info@hofstade.be</item>
-        <item>info@kske.be</item>
-        <item>info@doggen.be</item>
-    </string-array>
-
-    <string-array name="websites">
-        <item>www.hofstade.be</item>
-        <item>www.kske.be</item>
-        <item>www.doggen.be</item>
-    </string-array>
-
-    <string-array name="postcodes">
-        <item>9308 Hofstade</item>
-        <item>9320 Erembodegem</item>
-        <item>9320 Erembodegem</item>
-    </string-array>
-
-    <string-array name="adressen">
-        <item>Steenbergstraat 10</item>
-        <item>Gerstenstraat 7</item>
-        <item>Resschebeke 26</item>
-
-    </string-array>
 </resources>

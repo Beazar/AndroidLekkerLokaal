@@ -21,9 +21,6 @@ import javax.inject.Singleton
 @Component(modules = [NetworkModule::class])
 interface ViewModelComponent {
 
-    /**
-     * Injects the dependencies into the specified MetarViewModel.
-     * @param metarViewModel the [MetarViewModel] in which to inject the dependencies.
-     */
+
     fun inject(sportclubViewModel: SportclubViewmodel)
 }

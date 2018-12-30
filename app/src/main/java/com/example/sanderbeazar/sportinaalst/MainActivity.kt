@@ -1,15 +1,12 @@
 package com.example.sanderbeazar.sportinaalst
 
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import com.example.sanderbeazar.sportinaalst.fragments.SearchFragmentFragment
 import com.example.sanderbeazar.sportinaalst.fragments.SportclubLijstFragment
-import com.google.android.gms.maps.GoogleMap
-import com.google.android.gms.maps.OnMapReadyCallback
-import com.google.android.gms.maps.SupportMapFragment
 
 class MainActivity : AppCompatActivity(),  SportclubLijstFragment.SportclubCallbacks {
     override fun onMapCreated() {
@@ -19,7 +16,7 @@ class MainActivity : AppCompatActivity(),  SportclubLijstFragment.SportclubCallb
        // supportActionBar!!.setDisplayShowTitleEnabled(false)
         Log.d("testpurp","tijdens onCreateOptionsMenu ")
         //inflate het menu
-        menuInflater.inflate(R.menu.menu_listview, menu);
+        menuInflater.inflate(R.menu.menu_listview, menu)
         return true
     }
 

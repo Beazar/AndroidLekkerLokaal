@@ -2,42 +2,36 @@ package com.example.sanderbeazar.sportinaalst.fragments
 
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
-import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.*
+import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.CheckBox
 import android.widget.Spinner
-import com.example.sanderbeazar.sportinaalst.MainActivity
 import com.example.sanderbeazar.sportinaalst.R
 import com.example.sanderbeazar.sportinaalst.ui.SportclubViewmodel
 import kotlinx.android.synthetic.main.sportclub_search_fragment.*
-import android.widget.AdapterView
-import com.example.sanderbeazar.sportinaalst.domain.SimpleItemRecyclerViewAdapter
-import kotlinx.android.synthetic.main.sportclub_lijst_fragment.*
 
 
-class SearchFragmentFragment : Fragment{
+class SearchFragmentFragment : Fragment() {
 
     private lateinit var viewModel: SportclubViewmodel
 
-    private var checkedJongen : CheckBox? = null;
-    private var checkedMeisje: CheckBox? = null;
-    private var sportSpinner: Spinner? = null;
-    private var postcodeSpinner: Spinner? = null
+    private var checkedJongen : CheckBox? = null
+    private var checkedMeisje: CheckBox? = null
+    private var sportSpinner: Spinner? = null
 
-    private var postcode: String = "Alle";
-    private var sport: String = "Alle";
-    private var meisjes: Boolean = false;
-    private var jongens: Boolean = false;
+    private var postcode: String = "Alle"
+    private var sport: String = "Alle"
+    private var meisjes: Boolean = false
+    private var jongens: Boolean = false
 
 
     override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
-        menu?.clear();
-        inflater?.inflate(R.menu.menu_searchview, menu);
+        menu?.clear()
+        inflater?.inflate(R.menu.menu_searchview, menu)
 /*
             btn_zoek.setOnClickListener {
                 val intent = Intent(activity!!, MainActivity::class.java)
@@ -51,8 +45,8 @@ class SearchFragmentFragment : Fragment{
         return inflater.inflate(R.layout.sportclub_search_fragment,container,false)
     }
 
-    constructor(){
-        setHasOptionsMenu(true);
+    init {
+        setHasOptionsMenu(true)
     }
 
     override fun onStart() {
@@ -73,7 +67,6 @@ class SearchFragmentFragment : Fragment{
         checkedJongen = this.checkBox_jongens
         checkedMeisje = this.checkBox_meisjes
         sportSpinner = this.spinner_sport
-        postcodeSpinner = this.postcodeSpinner
 
 
         spinner_postcode.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
@@ -82,7 +75,7 @@ class SearchFragmentFragment : Fragment{
             }
 
             override fun onNothingSelected(parent: AdapterView<*>) {}
-        };
+        }
 
 
 
@@ -95,18 +88,18 @@ class SearchFragmentFragment : Fragment{
             }
 
             override fun onNothingSelected(parent: AdapterView<*>) {}
-        };
+        }
 
-        checkBox_jongens.setOnClickListener({
-            this.jongens = checkedJongen!!.isChecked()
-        })
+        checkBox_jongens.setOnClickListener {
+            this.jongens = checkedJongen!!.isChecked
+        }
 
-        checkBox_meisjes.setOnClickListener({
-            this.meisjes = checkedMeisje!!.isChecked()
-        })
+        checkBox_meisjes.setOnClickListener{
+            this.meisjes = checkedMeisje!!.isChecked
+        }
 
-            btn_zoek.setOnClickListener {
-            viewModel.getSportclubs().observe(this, Observer {
+            btn_zoek.setOnClickListener { _ ->
+                viewModel.getSportclubs().observe(this, Observer {
                 var sportclubs = it!!.filter {
                     club ->
                     (club.jongen == jongens ||
@@ -131,9 +124,9 @@ class SearchFragmentFragment : Fragment{
                         .addToBackStack(null)
                         .commit()
 
-                var pairs = sportclubs!!.map{club -> club.naam to club}
-                var sorted = pairs.sortedWith(compareBy { club -> club.first })
-                sportclubLijstFragment.zoeken(sorted.map{club -> club.second})
+                val pairs = sportclubs.map{ club -> club.naam to club}
+                val sorted = pairs.sortedWith(compareBy { club -> club.first })
+                sportclubLijstFragment.filterenVanSportclubs(sorted.map{club -> club.second})
             })
 
             }

@@ -1,16 +1,13 @@
-package com.example.sanderbeazar.sportinaalst.domain
+package com.example.sanderbeazar.sportinaalst.SportclubLijst
 
 import android.annotation.SuppressLint
-import android.content.Intent
 import android.support.v7.widget.RecyclerView
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.TextView
 import com.example.sanderbeazar.sportinaalst.R
-import com.example.sanderbeazar.sportinaalst.fragments.SportclubDetailFragment
+import com.example.sanderbeazar.sportinaalst.domain.Sportclub
 import com.example.sanderbeazar.sportinaalst.fragments.SportclubLijstFragment
 import kotlinx.android.synthetic.main.sportclub_lijst_content.view.*
 
@@ -26,7 +23,7 @@ class SimpleItemRecyclerViewAdapter(private val parentActivity: SportclubLijstFr
             // Here each item in the RecyclerView keeps a reference to the comic it represents.
             // This allows us to reuse a single listener for all items in the list
             val item = v.tag as Sportclub
-            parentActivity.startNewActivityForDetail(item);
+            parentActivity.startNewActivityForDetail(item)
 /*
             val intent = Intent(v.context, SportclubDetailFragment::class.java).apply {
                 putExtra(SportclubDetailFragment.ARG_SPORTCLUB, item)
@@ -45,7 +42,7 @@ class SimpleItemRecyclerViewAdapter(private val parentActivity: SportclubLijstFr
 
     @SuppressLint("NewApi")
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val sportclub = sportclubs!![position]
+        val sportclub = sportclubs[position]
         holder.name.text = sportclub.naam
         holder.sport.text = sportclub.sport
         holder.adres.text = sportclub.adres + ", " + sportclub.Postcode
@@ -56,7 +53,7 @@ class SimpleItemRecyclerViewAdapter(private val parentActivity: SportclubLijstFr
         }
     }
 
-    override fun getItemCount() = sportclubs!!.size
+    override fun getItemCount() = sportclubs.size
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val name: TextView = view.lijstnaam
