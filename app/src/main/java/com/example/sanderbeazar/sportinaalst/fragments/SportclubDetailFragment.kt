@@ -88,6 +88,10 @@ class SportclubDetailFragment : Fragment(), OnMapReadyCallback {
         tv_adres.text = sportclub!!.adres + " " + sportclub!!.Postcode
         tv_sport.text = sportclub!!.sport
         tv_website.text = sportclub!!.website
+        ctv_jongens.isChecked=sportclub!!.jongen
+        ctv_meisjes.isChecked=sportclub!!.meisje
+
+
         when {
             sportclub!!.sport.toLowerCase() == "andere" -> Picasso.get().load(andere).fit().into(imageView)
             sportclub!!.sport.toLowerCase() == "voetbal" -> Picasso.get().load(voetbal).fit().into(imageView)

@@ -86,8 +86,8 @@
 
     <TextView
         android:id="@+id/tv_website"
-        android:layout_width="276dp"
-        android:layout_height="43dp"
+        android:layout_width="190dp"
+        android:layout_height="33dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
@@ -95,14 +95,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/map" />
 
-    <CheckedTextView
+    <CheckBox
         android:id="@+id/ctv_jongens"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:checked="true"
+        android:checkMark="?android:attr/listChoiceIndicatorMultiple"
+        android:clickable="false"
         android:text="Jongens"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/map" />
@@ -112,9 +113,9 @@
         style="@android:style/Widget.Holo.Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="72dp"
-        android:layout_marginLeft="72dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginLeft="80dp"
+        android:layout_marginTop="16dp"
         android:text="Route"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_website" />
@@ -124,24 +125,25 @@
         style="@android:style/Widget.Holo.Button"
         android:layout_width="wrap_content"
         android:layout_height="48dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="80dp"
-        android:layout_marginRight="80dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="85dp"
+        android:layout_marginRight="85dp"
         android:text="Mail"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_website" />
 
-    <CheckedTextView
+    <CheckBox
         android:id="@+id/ctv_meisjes"
-        android:layout_width="wrap_content"
+        android:layout_width="81dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="12dp"
-        android:layout_marginRight="12dp"
-        android:checked="true"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:checkMark="?android:attr/listChoiceIndicatorMultiple"
+        android:clickable="false"
         android:text="Meisjes"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ctv_jongens" />
+        app:layout_constraintEnd_toStartOf="@+id/ctv_jongens"
+        app:layout_constraintTop_toBottomOf="@+id/map" />
 
 </android.support.constraint.ConstraintLayout>
 </ScrollView>
