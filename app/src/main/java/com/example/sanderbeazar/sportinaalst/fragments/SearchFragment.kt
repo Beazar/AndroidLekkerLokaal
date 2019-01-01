@@ -8,9 +8,10 @@ import android.util.Log
 import android.view.*
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import android.widget.CheckBox
+import android.widget.RadioButton
 import android.widget.Spinner
 import com.example.sanderbeazar.sportinaalst.R
+import com.example.sanderbeazar.sportinaalst.domain.Sportclub
 import com.example.sanderbeazar.sportinaalst.ui.SportclubViewmodel
 import kotlinx.android.synthetic.main.sportclub_search_fragment.*
 
@@ -19,14 +20,14 @@ class SearchFragmentFragment : Fragment() {
 
     private lateinit var viewModel: SportclubViewmodel
 
-    private var checkedJongen : CheckBox? = null
-    private var checkedMeisje: CheckBox? = null
+    private var checkedJongen : RadioButton? = null
+    private var checkedMeisje: RadioButton? = null
     private var sportSpinner: Spinner? = null
 
     private var postcode: String = "Alle"
     private var sport: String = "Alle"
     private var meisjes: Boolean = false
-    private var jongens: Boolean = false
+    private var jongens: Boolean = true
 
 
     override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
@@ -64,8 +65,8 @@ class SearchFragmentFragment : Fragment() {
         adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         p.adapter = adapter2
 
-        checkedJongen = this.checkBox_jongens
-        checkedMeisje = this.checkBox_meisjes
+        checkedJongen = this.rb_jongen
+        checkedMeisje = this.rb_meisje
         sportSpinner = this.spinner_sport
 
 
@@ -90,20 +91,28 @@ class SearchFragmentFragment : Fragment() {
             override fun onNothingSelected(parent: AdapterView<*>) {}
         }
 
-        checkBox_jongens.setOnClickListener {
+        rb_jongen.setOnClickListener {
             this.jongens = checkedJongen!!.isChecked
-        }
-
-        checkBox_meisjes.setOnClickListener{
             this.meisjes = checkedMeisje!!.isChecked
         }
 
+        rb_meisje.setOnClickListener{
+            this.meisjes = checkedMeisje!!.isChecked
+            this.jongens = checkedJongen!!.isChecked
+        }
+
             btn_zoek.setOnClickListener { _ ->
+                var sportclubs : List<Sportclub>
                 viewModel.getSportclubs().observe(this, Observer {
-                var sportclubs = it!!.filter {
-                    club ->
-                    (club.jongen == jongens ||
-                            club.meisje == meisjes)
+                    if(jongens == true){
+                        sportclubs =  it!!.filter {
+                            club ->
+                            (club.jongen == jongens)
+                    }}else{
+                        sportclubs =  it!!.filter {
+                                club ->
+                                (club.meisje == meisjes)
+                        }
                 }
 
                 if(postcode != "Alle"){
