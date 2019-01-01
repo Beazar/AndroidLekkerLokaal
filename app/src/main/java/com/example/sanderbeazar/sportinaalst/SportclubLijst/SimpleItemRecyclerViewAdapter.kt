@@ -24,13 +24,6 @@ class SimpleItemRecyclerViewAdapter(private val parentActivity: SportclubLijstFr
             // This allows us to reuse a single listener for all items in the list
             val item = v.tag as Sportclub
             parentActivity.startNewActivityForDetail(item)
-/*
-            val intent = Intent(v.context, SportclubDetailFragment::class.java).apply {
-                putExtra(SportclubDetailFragment.ARG_SPORTCLUB, item)
-                parentActivity.startNewActivityForDetail(item)
-*/
-//}
-      //      }
         }
     }
 

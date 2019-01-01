@@ -2,19 +2,17 @@ package com.example.sanderbeazar.sportinaalst
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
+import com.example.sanderbeazar.sportinaalst.domain.Sportclub
 import com.example.sanderbeazar.sportinaalst.fragments.SearchFragmentFragment
+import com.example.sanderbeazar.sportinaalst.fragments.SportclubDetailFragment
 import com.example.sanderbeazar.sportinaalst.fragments.SportclubLijstFragment
 
 class MainActivity : AppCompatActivity(),  SportclubLijstFragment.SportclubCallbacks {
-    override fun onMapCreated() {
-    }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-       // supportActionBar!!.setDisplayShowTitleEnabled(false)
-        Log.d("testpurp","tijdens onCreateOptionsMenu ")
         //inflate het menu
         menuInflater.inflate(R.menu.menu_listview, menu)
         return true
@@ -26,9 +24,7 @@ class MainActivity : AppCompatActivity(),  SportclubLijstFragment.SportclubCallb
                     .replace(R.id.container_main, SearchFragmentFragment())
                     .addToBackStack(null)
                     .commit()
-
             true
-
         }
         R.id.action_lijst -> {
             supportFragmentManager.beginTransaction()
@@ -49,11 +45,33 @@ class MainActivity : AppCompatActivity(),  SportclubLijstFragment.SportclubCallb
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        supportFragmentManager.beginTransaction()
-                .replace(R.id.container_main, SportclubLijstFragment())
-                .commit()
-
+        var fragment = supportFragmentManager.findFragmentById(R.id.container_main)
+        if (fragment == null) {
+            fragment = SportclubLijstFragment()
+            supportFragmentManager.beginTransaction()
+                    .add(R.id.container_main, fragment)
+                    .commit()
+        }
 
     }
+
+    override fun OnSportclubSelected(item: Sportclub) {
+        val sportclubDetailFragment = SportclubDetailFragment()
+        if(findViewById<View>(R.id.container_detail)==null){ //Smartphone
+            supportFragmentManager.beginTransaction()
+                    .replace(R.id.container_main, sportclubDetailFragment)
+                    .addToBackStack(null)
+                    .commit()
+        }else{ //tablet
+            supportFragmentManager.beginTransaction()
+                    .replace(R.id.container_detail, sportclubDetailFragment)
+                    .addToBackStack(null)
+                    .commit()
+        }
+        sportclubDetailFragment.addObject(item)
+    }
+
+
+
 
 }

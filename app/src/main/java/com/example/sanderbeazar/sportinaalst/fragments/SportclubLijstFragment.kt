@@ -5,7 +5,6 @@ import android.os.Build
 import android.os.Bundle
 import android.support.annotation.RequiresApi
 import android.support.v4.app.Fragment
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -33,7 +32,6 @@ class SportclubLijstFragment : Fragment() {
 
     fun filterenVanSportclubs(item: List<Sportclub>){
         this.sportclubs = item
-        Log.d("testpurp2",this.sportclubs!!.size.toString())
     }
 
 
@@ -48,7 +46,6 @@ class SportclubLijstFragment : Fragment() {
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onStart() {
         super.onStart()
-
 
         if(sportclubs==null){
             viewModel.getSportclubs().observe(this, android.arch.lifecycle.Observer {
@@ -70,17 +67,7 @@ class SportclubLijstFragment : Fragment() {
 
     fun startNewActivityForDetail(item: Sportclub) {
 
-        val sportclubDetailFragment = SportclubDetailFragment()
-
-        this.fragmentManager!!.beginTransaction()
-                .replace(R.id.container_main, sportclubDetailFragment)
-                .addToBackStack(null)
-                .commit()
-
-        sportclubDetailFragment.addObject(item)
-        Log.d("testpurp","voor onMapCreated ")
-        msportclubCallbacks!!.onMapCreated() //dit nog checken
-        Log.d("testpurp","na onMapCreated ")
+        msportclubCallbacks!!.OnSportclubSelected(item)
     }
 
     override fun onStop() {
@@ -90,22 +77,7 @@ class SportclubLijstFragment : Fragment() {
     }
 
     interface SportclubCallbacks {
-        fun onMapCreated()
-    }
-
-    companion object {
-        /**
-         * The fragment argument representing the item ID that this fragment
-         * represents.
-         */
-        fun newInstance(list: ArrayList<Sportclub>):SportclubDetailFragment{
-            val args = Bundle()
-            args.putSerializable("list",list)
-            val fragment = SportclubDetailFragment()
-            fragment.arguments = args
-
-            return fragment
-        }
+        fun OnSportclubSelected(item: Sportclub)
     }
 
 }
