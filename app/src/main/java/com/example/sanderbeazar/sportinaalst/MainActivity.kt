@@ -10,7 +10,7 @@ import com.example.sanderbeazar.sportinaalst.fragments.SearchFragmentFragment
 import com.example.sanderbeazar.sportinaalst.fragments.SportclubDetailFragment
 import com.example.sanderbeazar.sportinaalst.fragments.SportclubLijstFragment
 
-class MainActivity : AppCompatActivity(),  SportclubLijstFragment.SportclubCallbacks {
+class MainActivity : AppCompatActivity(), SportclubLijstFragment.SportclubCallbacks {
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         //inflate het menu
@@ -20,14 +20,13 @@ class MainActivity : AppCompatActivity(),  SportclubLijstFragment.SportclubCallb
 
     override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
         R.id.action_search -> {
-            val sportclubDetailFragment = SportclubDetailFragment()
-            if(findViewById<View>(R.id.container_detail)==null) { //Smartphone
+            if (findViewById<View>(R.id.container_detail) == null) { //Smartphone
                 supportFragmentManager.beginTransaction()
                         .replace(R.id.container_main, SearchFragmentFragment())
                         .addToBackStack(null)
                         .commit()
                 true
-            }else{
+            } else {
                 supportFragmentManager.beginTransaction()
                         .replace(R.id.container_detail, SearchFragmentFragment())
                         .addToBackStack(null)
@@ -61,24 +60,24 @@ class MainActivity : AppCompatActivity(),  SportclubLijstFragment.SportclubCallb
                     .add(R.id.container_main, fragment)
                     .commit()
 
-            if(findViewById<View>(R.id.container_detail)!=null){ //Smartphone
+            if (findViewById<View>(R.id.container_detail) != null) { //Smartphone
                 val searchFragment = SearchFragmentFragment()
                 supportFragmentManager.beginTransaction()
                         .replace(R.id.container_detail, searchFragment)
                         .addToBackStack(null)
                         .commit()
+            }
         }
+    }
 
-    }
-    }
-    override fun OnSportclubSelected(item: Sportclub) {
+    override fun onSportclubSelected(item: Sportclub) {
         val sportclubDetailFragment = SportclubDetailFragment()
-        if(findViewById<View>(R.id.container_detail)==null){ //Smartphone
+        if (findViewById<View>(R.id.container_detail) == null) { //Smartphone
             supportFragmentManager.beginTransaction()
                     .replace(R.id.container_main, sportclubDetailFragment)
                     .addToBackStack(null)
                     .commit()
-        }else{ //tablet
+        } else { //tablet
             supportFragmentManager.beginTransaction()
                     .replace(R.id.container_detail, sportclubDetailFragment)
                     .addToBackStack(null)
@@ -86,8 +85,6 @@ class MainActivity : AppCompatActivity(),  SportclubLijstFragment.SportclubCallb
         }
         sportclubDetailFragment.addObject(item)
     }
-
-
 
 
 }

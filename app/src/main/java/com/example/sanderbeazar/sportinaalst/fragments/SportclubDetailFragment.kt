@@ -28,6 +28,11 @@ import kotlinx.android.synthetic.main.sportclub_detail_fragment.*
 
 class SportclubDetailFragment : Fragment(), OnMapReadyCallback {
 
+    private var root: View? = null
+    private var sportclub : Sportclub? = null
+    private lateinit var viewModel: SportclubViewmodel
+    private lateinit var mMap : GoogleMap
+
     override fun onMapReady(googleMap: GoogleMap?) {
         viewModel.getSportclubs().observe(this, Observer{
             mMap = googleMap!!
@@ -38,15 +43,8 @@ class SportclubDetailFragment : Fragment(), OnMapReadyCallback {
             mMap.addMarker(MarkerOptions().position(LatLng(locatie.latitude, locatie.longitude)).title(sportclub!!.naam).snippet(sportclub!!.adres))
             val location = LatLng(locatie.latitude, locatie.longitude)
             mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(location, 17.5f))
-
         })
     }
-
-    private var root: View? = null
-    private var sportclub : Sportclub? = null
-    private lateinit var viewModel: SportclubViewmodel
-    private lateinit var mMap : GoogleMap
-
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         viewModel = ViewModelProviders.of(this).get(SportclubViewmodel::class.java)
@@ -54,8 +52,35 @@ class SportclubDetailFragment : Fragment(), OnMapReadyCallback {
         return root
     }
 
-    override fun onResume() {
-        super.onResume()
+    fun addObject(sportclub:Sportclub){
+        this.sportclub = sportclub
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        fillInTextViews()
+        setHeaderImage()
+    }
+
+
+    private fun fillInTextViews(){
+        tv_naamSportclub.text = sportclub!!.naam
+        tv_adres.text = sportclub!!.adres + " " + sportclub!!.Postcode
+        tv_sport.text = sportclub!!.sport
+        tv_website.text = sportclub!!.website
+        ctv_jongens.isChecked=sportclub!!.jongen
+        ctv_meisjes.isChecked=sportclub!!.meisje
+        if(this.sportclub!!.email == ""){
+            this.btn_mail.visibility = View.INVISIBLE
+        }
+    }
+
+
+    override fun onStart() {
+        super.onStart()
+        val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment?
+        mapFragment!!.getMapAsync(this)
+
         btn_route.setOnClickListener{
             val uri = sportclub!!.adres.trim() +",+"+ sportclub!!.Postcode.trim() + "+Belgium"
             val gmmIntentUri = Uri.parse("google.navigation:q=$uri")
@@ -71,27 +96,9 @@ class SportclubDetailFragment : Fragment(), OnMapReadyCallback {
             emailIntent.putExtra(Intent.EXTRA_TEXT, "")
             startActivity(Intent.createChooser(emailIntent, "Send email..."))
         }
-
     }
 
-    fun addObject(sportclub:Sportclub){
-        this.sportclub = sportclub
-        if(sportclub.email == ""){
-            this.btn_mail.visibility = View.INVISIBLE
-        }
-
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        tv_naamSportclub.text = sportclub!!.naam
-        tv_adres.text = sportclub!!.adres + " " + sportclub!!.Postcode
-        tv_sport.text = sportclub!!.sport
-        tv_website.text = sportclub!!.website
-        ctv_jongens.isChecked=sportclub!!.jongen
-        ctv_meisjes.isChecked=sportclub!!.meisje
-
-
+    private fun setHeaderImage(){
         when {
             sportclub!!.sport.toLowerCase() == "andere" -> Picasso.get().load(andere).fit().into(imageView)
             sportclub!!.sport.toLowerCase() == "voetbal" -> Picasso.get().load(voetbal).fit().into(imageView)
@@ -100,30 +107,6 @@ class SportclubDetailFragment : Fragment(), OnMapReadyCallback {
             sportclub!!.sport.toLowerCase() == "floorball" -> Picasso.get().load(floorball).fit().into(imageView)
             sportclub!!.sport.toLowerCase() == "volleybal" -> Picasso.get().load(volleybal).fit().into(imageView)
             sportclub!!.sport.toLowerCase() == "tennis" -> Picasso.get().load(tennis).fit().into(imageView)
-        }
-    }
-
-
-    override fun onStart() {
-        super.onStart()
-        val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment?
-        mapFragment!!.getMapAsync(this)
-    }
-
-    companion object {
-        /**
-         * The fragment argument representing the item ID that this fragment
-         * represents.
-         */
-        private const val ARG_SPORTCLUB = "item_id"
-
-        fun newInstance(club: Sportclub): SportclubDetailFragment {
-            val args = Bundle()
-            args.putSerializable(ARG_SPORTCLUB, club)
-            val fragment = SportclubDetailFragment()
-            fragment.arguments = args
-
-            return fragment
         }
     }
 

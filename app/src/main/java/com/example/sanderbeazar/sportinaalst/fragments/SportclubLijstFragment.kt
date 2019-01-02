@@ -67,7 +67,7 @@ class SportclubLijstFragment : Fragment() {
 
     fun startNewActivityForDetail(item: Sportclub) {
 
-        msportclubCallbacks!!.OnSportclubSelected(item)
+        msportclubCallbacks!!.onSportclubSelected(item)
     }
 
     override fun onStop() {
@@ -77,7 +77,7 @@ class SportclubLijstFragment : Fragment() {
     }
 
     interface SportclubCallbacks {
-        fun OnSportclubSelected(item: Sportclub)
+        fun onSportclubSelected(item: Sportclub)
     }
 
 }

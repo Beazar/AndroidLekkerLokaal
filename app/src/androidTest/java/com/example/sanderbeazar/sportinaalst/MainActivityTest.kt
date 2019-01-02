@@ -23,7 +23,7 @@ class MainActivityTest{
     var mActivityTestRule = ActivityTestRule(MainActivity::class.java)
 
     @Test
-    fun FullSearchProcess_CorrectSportclubName() {
+    fun fullSearchProcess_CorrectSportclubName() {
         //navigeer naar de zoekpagina
         onView(withId(R.id.action_search)).perform(click())
 
@@ -32,18 +32,18 @@ class MainActivityTest{
 
         // in Moorsel
         onView(withId(R.id.spinner_postcode)).perform(click())
-        onData(anything()).atPosition(4).perform(click());
+        onData(anything()).atPosition(4).perform(click())
 
         //selecteer alle sporten
         onView(withId(R.id.spinner_sport)).perform(click())
-        onData(anything()).atPosition(0).perform(click());
+        onData(anything()).atPosition(0).perform(click())
 
         //zoek
         onView(withId(R.id.btn_zoek)).perform(click())
 
         // open de badmintonclub
         onView(withId(R.id.lijst_fragment))
-                .perform(RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(0, click()));
+                .perform(RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(0, click()))
 
         onView(withId(R.id.tv_naamSportclub)).check(matches(withText("Aalsterse Badminton Club")))
 
@@ -51,7 +51,7 @@ class MainActivityTest{
 
 
     @Test
-    fun ShortProcess_CorrectSportclubName() {
+    fun shortProcess_CorrectSportclubName() {
 
         onView(withId(R.id.action_search)).perform(click())
 
@@ -60,7 +60,7 @@ class MainActivityTest{
 
         // open KSK Erembodegem
         onView(withId(R.id.lijst_fragment))
-                .perform(RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(8, click()));
+                .perform(RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(8, click()))
 
       //  onView(withId(R.id.tv_naamSportclub)).check(matches(withText("Aalsterse Badminton Club")))
         onView(withId(R.id.tv_naamSportclub)).check(matches(withText("KSK Erembodegem")))
