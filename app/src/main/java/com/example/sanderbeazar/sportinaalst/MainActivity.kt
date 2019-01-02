@@ -20,11 +20,20 @@ class MainActivity : AppCompatActivity(),  SportclubLijstFragment.SportclubCallb
 
     override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
         R.id.action_search -> {
-            supportFragmentManager.beginTransaction()
-                    .replace(R.id.container_main, SearchFragmentFragment())
-                    .addToBackStack(null)
-                    .commit()
-            true
+            val sportclubDetailFragment = SportclubDetailFragment()
+            if(findViewById<View>(R.id.container_detail)==null) { //Smartphone
+                supportFragmentManager.beginTransaction()
+                        .replace(R.id.container_main, SearchFragmentFragment())
+                        .addToBackStack(null)
+                        .commit()
+                true
+            }else{
+                supportFragmentManager.beginTransaction()
+                        .replace(R.id.container_detail, SearchFragmentFragment())
+                        .addToBackStack(null)
+                        .commit()
+                true
+            }
         }
         R.id.action_lijst -> {
             supportFragmentManager.beginTransaction()
@@ -43,7 +52,7 @@ class MainActivity : AppCompatActivity(),  SportclubLijstFragment.SportclubCallb
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_masterdetail)
 
         var fragment = supportFragmentManager.findFragmentById(R.id.container_main)
         if (fragment == null) {
@@ -51,10 +60,17 @@ class MainActivity : AppCompatActivity(),  SportclubLijstFragment.SportclubCallb
             supportFragmentManager.beginTransaction()
                     .add(R.id.container_main, fragment)
                     .commit()
+
+            if(findViewById<View>(R.id.container_detail)!=null){ //Smartphone
+                val searchFragment = SearchFragmentFragment()
+                supportFragmentManager.beginTransaction()
+                        .replace(R.id.container_detail, searchFragment)
+                        .addToBackStack(null)
+                        .commit()
         }
 
     }
-
+    }
     override fun OnSportclubSelected(item: Sportclub) {
         val sportclubDetailFragment = SportclubDetailFragment()
         if(findViewById<View>(R.id.container_detail)==null){ //Smartphone

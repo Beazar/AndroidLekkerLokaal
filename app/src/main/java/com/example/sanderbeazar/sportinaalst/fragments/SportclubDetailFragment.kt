@@ -76,7 +76,7 @@ class SportclubDetailFragment : Fragment(), OnMapReadyCallback {
 
     fun addObject(sportclub:Sportclub){
         this.sportclub = sportclub
-        if(sportclub.email == null ||sportclub.email == ""){
+        if(sportclub.email == ""){
             this.btn_mail.visibility = View.INVISIBLE
         }
 
